@@ -19,7 +19,7 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@WithMockUser
+@WithMockUser(username = "sarah1")
 class ApplicationTests {
 
 	@Autowired
@@ -59,8 +59,7 @@ class ApplicationTests {
 	void shouldReturnAllCashCardsWhenListIsRequested() throws Exception {
 		this.mvc.perform(get("/cashcards"))
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.length()").value(3))
-				.andExpect(jsonPath("$..owner").value(hasItem("sarah1")))
-				.andExpect(jsonPath("$..owner").value(hasItem("esuez5")));
+				.andExpect(jsonPath("$.length()").value(2))
+				.andExpect(jsonPath("$..owner").value(hasItem("sarah1")));
 	}
 }

@@ -8,5 +8,6 @@ import java.lang.annotation.Target;
 @Target({ ElementType.PARAMETER, ElementType.ANNOTATION_TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 // Add annotation here
+
 public @interface CurrentOwner {
 }
