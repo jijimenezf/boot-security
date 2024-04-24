@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @WithMockUser(username = "sarah1")
-class CashCardApplicationTests {
+class ApplicationTests {
 
 	@Autowired
 	private MockMvc mvc;
