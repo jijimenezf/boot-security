@@ -59,4 +59,10 @@ class ApplicationTests {
 				.andExpect(jsonPath("$.length()").value(2))
 				.andExpect(jsonPath("$..owner").value(everyItem(equalTo("sarah1"))));
 	}
+
+	@Test
+	@WithMockUser(username="esuez5", authorities = {"SCOPE_cashcard:read"})
+	void shouldReturnForbiddenWhenCashCardBelongsToSomeoneElse() throws Exception {
+		this.mvc.perform(get("/cashcards/99")).andExpect(status().isForbidden());
+	}
 }
