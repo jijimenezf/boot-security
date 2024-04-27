@@ -35,11 +35,9 @@ public class ProblemDetailsAuthenticationEntryPoint implements AuthenticationEnt
 
         if (authException.getCause() instanceof JwtValidationException validation) {
             ProblemDetail detail = ProblemDetail.forStatus(401);
-
-            detail.setType(URI.create("https://tools.ietf.org/html/rfc6705#section-3.1"));
+            detail.setType(URI.create("https://tools.ietf.org/html/rfc6750#section-3.1"));
             detail.setTitle("Invalid Token");
             detail.setProperty("errors", validation.getErrors());
-
             this.mapper.writeValue(response.getWriter(), detail);
         }
     }
